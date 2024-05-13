@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text("Barang ${index + 1}"),
+                            Text("TESTING ${index + 1}"),
                             const SizedBox(
                                 height: 10), // Spacing between text and button
                             // Add an icon (optional)
