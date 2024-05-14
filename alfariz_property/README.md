@@ -1,4 +1,4 @@
-# alfariz_property
+# Al-Fariz Property
 
 A new Flutter project.
 

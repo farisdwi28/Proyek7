@@ -1,0 +1,13 @@
+flutter_native_splash:
+  color: "#FFFFFF"
+  color_dark : "#272727"
+  image: assets/logos/logoSementara.png
+  image_dark: assets/logos/logoSementara.png
+
+android_12:
+  color: "#FFFFFF"
+  color_dark : "#272727"
+  image: assets/logos/logoSementara.png
+  image_dark: assets/logos/logoSementara.png
+
+web: false
