@@ -2,7 +2,7 @@ import 'package:alfariz_property/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
-  const App ({super.key});
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,6 +10,14 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Home'),
+        ),
+        body: Center(
+          child: Text('Hello, World!'),
+        ),
+      ),
     );
   }
 }

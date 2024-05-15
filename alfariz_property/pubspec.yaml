@@ -7,7 +7,6 @@ version: 1.0.0+1
 environment:
   sdk: ">=3.3.0 <4.0.0"
 
-#---------------------- PACKAGES ----------------------#
 dependencies:
   flutter:
     sdk: flutter
@@ -23,29 +22,40 @@ dependencies:
   cupertino_icons: ^1.0.6
   iconsax: ^0.0.8
 
-  # state management
+  # State Management
   get: ^4.6.6
   get_storage: ^2.1.1
-  
 
-  # product specific
+  # Product Specific
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/logos/logo_light_mode.png
+  color_dark: "#000000"
+  image_dark: assets/logos/logo_dark_mode.png
+  android: true
+  ios: false
+  web: false
+  android_12:
+    image: assets/logos/logo_light_mode.png
+    image_dark: assets/logos/logo_dark_mode.png
+    icon_background_color: "#FFFFFF"
+    icon_background_color_dark: "#000000"
+
 flutter:
   uses-material-design: true
 
   assets:
-    # - assets/icons/
-    # - assets/images/
     - assets/logos/
-    # - assets/videos/
 
   fonts:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Bold.ttf
         - asset: assets/fonts/Poppins-Medium.ttf
-        # - asset: assets/fonts/Poppins-Reguler.ttf
+        # - asset: assets/fonts/Poppins-Regular.ttf
