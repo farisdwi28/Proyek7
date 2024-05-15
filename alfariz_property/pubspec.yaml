@@ -38,14 +38,14 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/icons/
-    - assets/images/
+    # - assets/icons/
+    # - assets/images/
     - assets/logos/
-    - assets/videos/
+    # - assets/videos/
 
   fonts:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Bold.ttf
         - asset: assets/fonts/Poppins-Medium.ttf
-        - asset: assets/fonts/Poppins-Reguler.ttf
+        # - asset: assets/fonts/Poppins-Reguler.ttf
