@@ -1,3 +1,4 @@
+import 'package:alfariz_property/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:alfariz_property/features/authentication/screens/signup/singup.dart';
 import 'package:alfariz_property/utils/constants/sizes.dart';
 import 'package:alfariz_property/utils/constants/text_strings.dart';
@@ -44,7 +45,7 @@ class LoginForm extends StatelessWidget {
               ),
               // Forgot Password
               TextButton(
-                  onPressed: () {}, child: const Text(TText.forgotPassword)),
+                  onPressed: () => Get.to(() => const ForgetPassword()), child: const Text(TText.forgotPassword)),
             ],
           ),
           const SizedBox(height: Tsizes.spaceBtwInputFields),

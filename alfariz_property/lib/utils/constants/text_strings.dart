@@ -48,4 +48,18 @@ class TText {
       "Your account successfully created!";
   static const String yourAccountCreatedSubTitle =
       "Welcome to Your Ultimate Property Search Platform. Your account has been successfully created. Experience the seamless joy of online property searching with us.";
+
+  // Forget Password
+  static const String forgotPasswordTitle = "Forget Password";
+  static const String forgotPasswordSubTitle =
+      "Dont wory sometimes people can forget password too, enter your email and we will send you a password rest link";
+  static const String submit = "Submit";
+
+  // Rest Password
+  static const String changedYourPasswordTitle = "Password Reset Email Sent";
+  static const String changedYourPasswordSubTitle =
+      "Your account Security is our Priority! We have sent you a secure link to safely. Change your Password and keep Your Account Protected";
+  static const String done = "Done";
+
+  //
 }
