@@ -1,4 +1,4 @@
-import 'package:alfariz_property/features/authentication/screens/signup.widgets/singup.dart';
+import 'package:alfariz_property/features/authentication/screens/signup/singup.dart';
 import 'package:alfariz_property/utils/constants/sizes.dart';
 import 'package:alfariz_property/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';

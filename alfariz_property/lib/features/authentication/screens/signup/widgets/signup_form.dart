@@ -1,7 +1,9 @@
-import 'package:alfariz_property/features/authentication/screens/signup.widgets/terms_conditions_checkbox.dart';
+import 'package:alfariz_property/features/authentication/screens/signup/verify_email.dart';
+import 'package:alfariz_property/features/authentication/screens/signup/widgets/terms_conditions_checkbox.dart';
 import 'package:alfariz_property/utils/constants/sizes.dart';
 import 'package:alfariz_property/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TSignupForm extends StatelessWidget {
@@ -22,15 +24,16 @@ class TSignupForm extends StatelessWidget {
                   labelText: TText.firstName, prefixIcon: Icon(Iconsax.user)),
             ),
           ),
+          const SizedBox(width: 16.0), // Add some space between the fields
+          Expanded(
+            child: TextFormField(
+              expands: false,
+              decoration: const InputDecoration(
+                  labelText: TText.lastName,
+                  prefixIcon: Icon(Iconsax.user_edit)),
+            ),
+          ),
         ]),
-        const SizedBox(height: Tsizes.spaceBtwInputFields),
-
-        /// username
-        TextFormField(
-          expands: false,
-          decoration: const InputDecoration(
-              labelText: TText.lastName, prefixIcon: Icon(Iconsax.user_edit)),
-        ),
         const SizedBox(height: Tsizes.spaceBtwInputFields),
 
         /// Email
@@ -68,10 +71,9 @@ class TSignupForm extends StatelessWidget {
         SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-                onPressed: () {}, child: const Text(TText.createAccount))),
+                onPressed: () => Get.to(() => const VerifyEmailScreen()),
+                child: const Text(TText.createAccount))),
       ]),
     );
   }
 }
-
-

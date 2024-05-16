@@ -28,13 +28,24 @@ class TText {
   static const String createAccount = "Create Account";
   static const String orSignInWith = "Or Sign In With";
 
-  //Signup 
+  //Signup
   static const String signupTitle = "Let's Create Your Account";
   static const String firstName = "First Name";
   static const String lastName = "Last Name";
   static const String iAgreeto = "  I Agree To";
   static const String privacyPolicy = " Privacy Policy";
   static const String and = " and";
-  static const String termsOfUse= " Terms of Use";
+  static const String termsOfUse = " Terms of Use";
   static const String call = "Phone Number";
+
+  //Verify
+  static const String confirmEmail = "Verify your email address!";
+  static const String confirmEmailSubTitle =
+      "Congratulations! Your Account Awaits: Verify Your Email to Begin Your Search and Unlock a World of Unrivaled Deals and Personalized Offers.";
+  static const String tContinue = "Continue";
+  static const String resendEmail = "Resend Email";
+  static const String yourAccountCreatedTitle =
+      "Your account successfully created!";
+  static const String yourAccountCreatedSubTitle =
+      "Welcome to Your Ultimate Property Search Platform. Your account has been successfully created. Experience the seamless joy of online property searching with us.";
 }

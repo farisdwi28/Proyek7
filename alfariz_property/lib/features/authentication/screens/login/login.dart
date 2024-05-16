@@ -1,5 +1,5 @@
-import 'package:alfariz_property/common/widgets.login_signup/form_divider.dart';
-import 'package:alfariz_property/common/widgets.login_signup/social_buttons.dart';
+import 'package:alfariz_property/common/widgets/login_signup/form_divider.dart';
+import 'package:alfariz_property/common/widgets/login_signup/social_buttons.dart';
 import 'package:alfariz_property/features/authentication/screens/login/widgets/login_form.dart';
 import 'package:alfariz_property/features/authentication/screens/login/widgets/login_header.dart';
 import 'package:alfariz_property/utils/constants/text_strings.dart';

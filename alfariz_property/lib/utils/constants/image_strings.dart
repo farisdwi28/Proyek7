@@ -11,6 +11,9 @@ class TImages {
   static const String onBoardingImage2 = "assets/images/on_boarding_images/chat.gif";
   static const String onBoardingImage3 = "assets/images/on_boarding_images/map.gif";
 
+  // Verify Gif
+  static const String verifyEmail = "assets/images/animations/email.gif";
+  static const String verifyEmailSuccess = "assets/images/animations/success.gif";
 
  // google Logo
   static const String google= "assets/logos/google.png";
