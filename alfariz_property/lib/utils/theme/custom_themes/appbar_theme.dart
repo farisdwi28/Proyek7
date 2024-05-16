@@ -1,3 +1,4 @@
+import 'package:alfariz_property/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class TAppBarTheme{
@@ -9,7 +10,7 @@ class TAppBarTheme{
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,
     surfaceTintColor: Colors.transparent,
-    iconTheme: IconThemeData(color: Colors.black, size: 24),
+    iconTheme: IconThemeData(color: TColors.primary, size: 24),
     actionsIconTheme: IconThemeData(color: Colors.black, size: 24),
     titleTextStyle: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.black)
   );
@@ -21,7 +22,7 @@ class TAppBarTheme{
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,
     surfaceTintColor: Colors.transparent,
-    iconTheme: IconThemeData(color: Colors.black, size: 24),
+    iconTheme: IconThemeData(color: TColors.primary, size: 24),
     actionsIconTheme: IconThemeData(color: Colors.white, size: 24),
     titleTextStyle: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.white)
   );

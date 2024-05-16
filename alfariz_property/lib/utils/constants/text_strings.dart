@@ -23,8 +23,18 @@ class TText {
   static const String email = "E-Mail";
   static const String password = "Password";
   static const String rememberMe = "Remember Me";
-  static const String forgotPassword = "Forgot Passdowr?";
+  static const String forgotPassword = "Forgot Password?";
   static const String singIn = "Sign In";
   static const String createAccount = "Create Account";
-  static const String orSignInWith = "Or Sing In With";
+  static const String orSignInWith = "Or Sign In With";
+
+  //Signup 
+  static const String signupTitle = "Let's Create Your Account";
+  static const String firstName = "First Name";
+  static const String lastName = "Last Name";
+  static const String iAgreeto = "  I Agree To";
+  static const String privacyPolicy = " Privacy Policy";
+  static const String and = " and";
+  static const String termsOfUse= " Terms of Use";
+  static const String call = "Phone Number";
 }
