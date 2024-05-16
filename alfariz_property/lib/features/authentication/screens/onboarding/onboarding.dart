@@ -13,6 +13,7 @@ class OnBoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // onBoarding Controller to handle Logic
     final controller = Get.put(OnBoardingController());
 
     return Scaffold(

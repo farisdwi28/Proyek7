@@ -6,7 +6,6 @@ import 'package:alfariz_property/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-
 class OnBoardingNextButton extends StatelessWidget {
   const OnBoardingNextButton({
     super.key,
@@ -20,7 +19,9 @@ class OnBoardingNextButton extends StatelessWidget {
       bottom: TDeviceUtils.getBottomNavigationBarHeight(),
       child: ElevatedButton(
         onPressed: () => OnBoardingController.instance.nextPage(),
-        style: ElevatedButton.styleFrom(shape: const CircleBorder(), backgroundColor: dark ? Colors.black :  TColors.primary),
+        style: ElevatedButton.styleFrom(
+            shape: const CircleBorder(),
+            backgroundColor: dark ? Colors.black : TColors.primary),
         child: const Icon(Iconsax.arrow_right_3),
       ),
     );
