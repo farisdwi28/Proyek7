@@ -1,5 +1,6 @@
 import 'package:alfariz_property/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:alfariz_property/features/authentication/screens/signup/singup.dart';
+import 'package:alfariz_property/navigation_menu.dart';
 import 'package:alfariz_property/utils/constants/sizes.dart';
 import 'package:alfariz_property/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,7 @@ class LoginForm extends StatelessWidget {
           SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () {}, child: const Text(TText.singIn))),
+                  onPressed: () => Get.to(() => const NavigationMenu()) , child: const Text(TText.singIn))),
           const SizedBox(height: Tsizes.spaceBtwItems),
           // Create Account Button
           SizedBox(
