@@ -25,6 +25,9 @@ class TImages {
   //Profile
   static const String user = "assets/images/user/user.png";
 
+  //Property
+  static const String home = "assets/images/property/rumah.png";
+
 
 
 }

@@ -14,12 +14,12 @@ class TUserProfileTile extends StatelessWidget {
     return ListTile(
       leading: const TCircularImage(
           image: TImages.user, width: 50, height: 50, padding: 0),
-      title: Text('John Doe',
+      title: Text('Al-Fariz Property',
           style: Theme.of(context)
               .textTheme
               .headlineSmall!
               .apply(color: TColors.light)),
-      subtitle: Text('johndoe@gmail.com',
+      subtitle: Text('alfariz@gmail.com',
           style: Theme.of(context)
               .textTheme
               .bodyMedium!

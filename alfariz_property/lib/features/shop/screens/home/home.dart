@@ -1,5 +1,7 @@
 import 'package:alfariz_property/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:alfariz_property/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:alfariz_property/common/widgets/layouts/grid_layout.dart';
+import 'package:alfariz_property/common/widgets/properti_cards/properti_card_vertical.dart';
 import 'package:alfariz_property/common/widgets/texts/section_heading.dart';
 import 'package:alfariz_property/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:alfariz_property/features/shop/screens/home/widgets/home_categories.dart';
@@ -11,12 +13,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             /// Header
-            TPrimaryHeaderContainer(
+            const TPrimaryHeaderContainer(
                 child: Column(
               children: [
                 /// App bar
@@ -49,6 +51,14 @@ class HomeScreen extends StatelessWidget {
                 )
               ],
             )),
+            Padding(
+              padding: const EdgeInsets.all(Tsizes.defaultSpace),
+              child: Column(
+                children: [
+                  TGridLayout(itemCount: 10, itemBuilder: (_, index) => const TPropertyCardVertical())                  
+                ],
+              ),
+            )
           ],
         ),
       ),

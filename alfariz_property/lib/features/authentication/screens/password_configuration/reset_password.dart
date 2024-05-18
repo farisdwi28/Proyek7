@@ -1,3 +1,4 @@
+import 'package:alfariz_property/features/authentication/screens/login/login.dart';
 import 'package:alfariz_property/utils/constants/image_strings.dart';
 import 'package:alfariz_property/utils/constants/sizes.dart';
 import 'package:alfariz_property/utils/constants/text_strings.dart';
@@ -54,7 +55,7 @@ class ResetPassword extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () {}, child: const Text(TText.done)),
+                    onPressed: (() => Get.offAll(() => const LoginScreen())) , child: const Text(TText.done)),
               ),
               // Buttons
               SizedBox(
