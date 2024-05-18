@@ -16,7 +16,7 @@ class THomeScategories extends StatelessWidget {
         itemCount: 2,
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
-          return TVerticalImageText(image: TImages.land, title: 'Property Tanah', onTap: () {  },);
+          return TVerticalImageText(image: TImages.land, title: 'Land', onTap: () {  },);
         },
       ),
     );

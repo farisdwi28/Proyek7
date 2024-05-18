@@ -15,25 +15,34 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            /// Header
             TPrimaryHeaderContainer(
                 child: Column(
               children: [
-              THomeAppBar(),
-              SizedBox(height: Tsizes.defaultSpace),
-              TSearchContainer(
+                /// App bar
+                THomeAppBar(),
+                SizedBox(height: Tsizes.defaultSpace),
+
+                // SearchBar
+                TSearchContainer(
                   text: 'Search in here',
                 ),
-              SizedBox(height: Tsizes.defaultSpace),
+                SizedBox(height: Tsizes.defaultSpace),
+
+                /// Categories
                 Padding(
                   padding: EdgeInsets.only(left: Tsizes.defaultSpace),
                   child: Column(
                     children: [
-                    TSectionHeading(
+                      /// heading
+                      TSectionHeading(
                         title: 'List Categories',
                         showActionButton: false,
                         textColor: Colors.white,
                       ),
-                    SizedBox(height: Tsizes.spaceBtwItems),
+                      SizedBox(height: Tsizes.spaceBtwItems),
+
+                      /// catagories
                       THomeScategories()
                     ],
                   ),
@@ -46,7 +55,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-

@@ -53,6 +53,7 @@ class TVerticalImageText extends StatelessWidget {
                     .apply(color: textColor),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
               ),
             )
           ],
