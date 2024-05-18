@@ -1,7 +1,7 @@
-import 'package:alfariz_property/features/authentication/screens/onboarding/onboarding.dart';
-import 'package:alfariz_property/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:alfariz_property/utils/theme/theme.dart';
+import 'package:alfariz_property/features/authentication/screens/onboarding/onboarding.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -12,7 +12,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
-      home: const OnBoardingScreen(),     
+      home: const OnBoardingScreen(),
     );
   }
 }

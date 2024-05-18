@@ -3,11 +3,13 @@ class TText {
 
   // Home
   static const String homeAppbarTitle = "The Best Properties For You!";
+  static const String homeAppbarSubTitle = "Al Fariz Property";
+
 
   // Onboarding text
-  static const String onBoardingTitle1 = "Cari properti yang anda inginkan";
-  static const String onBoardingTitle2 = "Chat dengan pemilik properti";
-  static const String onBoardingTitle3 = "Telusuri mapsnya";
+  static const String onBoardingTitle1 = "Looking for property?";
+  static const String onBoardingTitle2 = "Chat with the owner";
+  static const String onBoardingTitle3 = "Find the location";
 
   static const String onBoardingSubTitle1 =
       "Search for houses, apartments or land based on location, price and property type";
@@ -61,5 +63,6 @@ class TText {
       "Your account Security is our Priority! We have sent you a secure link to safely. Change your Password and keep Your Account Protected";
   static const String done = "Done";
 
-  //
+  // Appbar
+  
 }

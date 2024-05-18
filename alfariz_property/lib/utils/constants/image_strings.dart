@@ -17,4 +17,9 @@ class TImages {
 
  // google Logo
   static const String google= "assets/logos/google.png";
+
+  //Categories
+  static const String land= "assets/icons/land.png";
+  static const String house= "assets/icons/house.png";
+
 }
