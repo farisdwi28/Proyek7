@@ -1,3 +1,4 @@
+import 'package:alfariz_property/features/personalization/screens/settings/settings.dart';
 import 'package:alfariz_property/features/shop/screens/home/home.dart';
 import 'package:alfariz_property/utils/constants/colors.dart';
 import 'package:alfariz_property/utils/helpers/helper_functions.dart';
@@ -45,6 +46,6 @@ class NavigationController extends GetxController {
     const HomeScreen(),
     Container(color: Colors.purple),
     Container(color: Colors.orange),
-    Container(color: Colors.blue)
+    const SettingsScreen()
   ];
 }

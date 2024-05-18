@@ -22,4 +22,9 @@ class TImages {
   static const String land= "assets/icons/land.png";
   static const String house= "assets/icons/house.png";
 
+  //Profile
+  static const String user = "assets/images/user/user.png";
+
+
+
 }

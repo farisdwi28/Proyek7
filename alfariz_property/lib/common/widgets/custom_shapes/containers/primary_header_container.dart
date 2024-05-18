@@ -1,6 +1,7 @@
 import 'package:alfariz_property/common/widgets/custom_shapes/containers/circular_container.dart';
 import 'package:alfariz_property/common/widgets/custom_shapes/curved_edges/curved_edges_widgets.dart';
 import 'package:alfariz_property/utils/constants/colors.dart';
+// import 'package:alfariz_property/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class TPrimaryHeaderContainer extends StatelessWidget {
@@ -16,7 +17,6 @@ class TPrimaryHeaderContainer extends StatelessWidget {
     return TCurvedEdgeWidget(
       child: Container(
         color: TColors.primary,
-        height: 350,
         padding: const EdgeInsets.only(bottom: 0),
           child: Stack(
             children: [
