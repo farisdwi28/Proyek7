@@ -1,14 +1,22 @@
 import 'package:alfariz_property/common/widgets/images/t_circular_images.dart';
+import 'package:alfariz_property/features/personalization/screens/profile/profile.dart';
 import 'package:alfariz_property/utils/constants/colors.dart';
 import 'package:alfariz_property/utils/constants/image_strings.dart';
 import 'package:alfariz_property/utils/local_storage/storage_utility.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:alfariz_property/utils/services/auth_service.dart';
 import 'dart:convert';
 
 class TUserProfileTile extends StatefulWidget {
-  const TUserProfileTile({super.key});
+  const TUserProfileTile({
+    super.key, 
+  required this.onPressed,
+  });
+  
+  final VoidCallback onPressed;
+  
 
   @override
   // ignore: library_private_types_in_public_api
@@ -61,7 +69,7 @@ class _TUserProfileTileState extends State<TUserProfileTile> {
                     .bodyMedium!
                     .apply(color: TColors.light)),
             trailing: IconButton(
-                onPressed: () {},
+                onPressed: () => Get.to(() => const ProfileScreen()),
                 icon: const Icon(Iconsax.edit, color: TColors.light)),
           );
         }

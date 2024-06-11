@@ -1,4 +1,4 @@
-import 'package:alfariz_property/features/authentication/screens/password_configuration/reset_password.dart';
+import 'package:alfariz_property/features/authentication/screens/login/login.dart';
 import 'package:alfariz_property/utils/constants/sizes.dart';
 import 'package:alfariz_property/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
@@ -33,11 +33,36 @@ class ForgetPassword extends StatelessWidget {
             ),
             const SizedBox(height: Tsizes.spaceBtwItems * 2),
 
+          //   TextFormField(
+          //   controller: _passwordController,
+          //   decoration: InputDecoration(
+          //     labelText: TText.password,
+          //     prefixIcon: const Icon(Iconsax.lock),
+          //     suffixIcon: IconButton(
+          //       icon: Icon(
+          //         obscureText ? Icons.visibility : Icons.visibility_off,
+          //       ),
+          //       onPressed: () {
+          //         setState(() {
+          //           obscureText = !obscureText;
+          //         });
+          //       },
+          //     ),
+          //   ),
+          //   obscureText: obscureText,
+          //   validator: (value) {
+          //     if (value == null || value.isEmpty) {
+          //       return 'Password is required';
+          //     }
+          //     return null;
+          //   },
+          // ),
+
             /// Submit Button
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.off(() => const ResetPassword()),
+                    onPressed: () => Get.off(() => const LoginScreen()),
                     child: const Text(TText.submit)))
           ],
         ),

@@ -10,6 +10,7 @@ import 'package:alfariz_property/utils/local_storage/storage_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:alfariz_property/features/personalization/screens/profile/profile.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -29,14 +30,14 @@ class SettingsScreen extends StatelessWidget {
                             .textTheme
                             .headlineMedium!
                             .apply(color: TColors.light))),
+                TUserProfileTile(onPressed: () => Get.to(() => const ProfileScreen())),
                 const SizedBox(height: Tsizes.spaceBtwSection),
 
                 /// user profile
 
-                const TUserProfileTile(),
-                const SizedBox(height: Tsizes.spaceBtwSection),
               ],
-            )),
+            ),
+            ),
 
             /// body
             Padding(
