@@ -38,6 +38,7 @@ class _LoginFormState extends State<LoginForm> {
     }
   }
 
+  // ignore: unused_element
   void _togglePasswordVisibility() {
     setState(() {
       obscureText = !obscureText;
@@ -147,12 +148,19 @@ class _LoginFormState extends State<LoginForm> {
           // Sign In Button
           SizedBox(
             width: double.infinity,
-            child: _isLoading
-                ? const CircularProgressIndicator()
-                : ElevatedButton(
-                    onPressed: _login,
-                    child: const Text(TText.singIn),
-                  ),
+            child: ElevatedButton(
+              onPressed: _isLoading ? null : _login,
+              child: _isLoading
+                  ? const SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2.0,
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      ),
+                    )
+                  : const Text(TText.singIn),
+            ),
           ),
           const SizedBox(height: Tsizes.spaceBtwItems),
           // Create Account Button

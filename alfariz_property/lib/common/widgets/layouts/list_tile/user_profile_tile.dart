@@ -5,6 +5,7 @@ import 'package:alfariz_property/utils/local_storage/storage_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:alfariz_property/utils/services/auth_service.dart';
+import 'dart:convert';
 
 class TUserProfileTile extends StatefulWidget {
   const TUserProfileTile({super.key});
@@ -40,9 +41,15 @@ class _TUserProfileTileState extends State<TUserProfileTile> {
           final firstName = data['first_name'] ?? 'First Name';
           final lastName = data['last_name'] ?? 'Last Name';
           final email = data['email'] ?? 'email@example.com';
+          final avatarBase64 = data['avatar'] ?? '';
 
           return ListTile(
-            leading: const TCircularImage(image: TImages.user),
+            leading: avatarBase64.isNotEmpty
+                ? CircleAvatar(
+                    backgroundImage: MemoryImage(base64Decode(avatarBase64)),
+                    radius: 24,
+                  )
+                : const TCircularImage(image: TImages.user),
             title: Text('$firstName $lastName',
                 style: Theme.of(context)
                     .textTheme

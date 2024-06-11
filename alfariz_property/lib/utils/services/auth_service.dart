@@ -5,27 +5,6 @@ import 'package:alfariz_property/utils/local_storage/storage_utility.dart';
 import 'package:get/get.dart';
 
 class AuthService {
-  // Future<void> loginUser(Map<String, dynamic> credentials) async {
-  //   try {
-  //     final response = await THttpHelper.post(
-  //         APIConstants.loginEndpoint, credentials,
-  //         includeToken: false);
-  //     print(
-  //         'Login Response: $response'); // Tambahkan log untuk melihat response
-  //     if (response.containsKey('token')) {
-  //       await TLocalStorage().saveData('token', response['token']);
-  //       Get.to(() => const NavigationMenu());
-  //     } else {
-  //       // Handle login failure
-  //       Get.snackbar('Login Failed', 'Invalid credentials. Please try again.',
-  //           snackPosition: SnackPosition.TOP);
-  //     }
-  //   } catch (e) {
-  //     print('Login Error: $e'); // Tambahkan log untuk melihat error
-  //     // Get.snackbar('Error', 'An error occurred: $e', snackPosition: SnackPosition.TOP);
-  //   }
-  // }
-
   Future<void> loginUser(Map<String, dynamic> credentials) async {
     try {
       final response = await THttpHelper.post(APIConstants.loginEndpoint, credentials, includeToken: false);
