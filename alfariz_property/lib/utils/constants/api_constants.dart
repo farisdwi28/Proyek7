@@ -6,4 +6,8 @@ class APIConstants {
   static const String updateUser = '$baseUrl/users/editProfile';
   static const String uploadPhoto = '$baseUrl/photos/photo';
   static const String deleteUser = '$baseUrl/users';
+  static const String forgotPassword= '$baseUrl/users/resetPassword';
+  /// Property
+  static const String getAllProperty = '$baseUrl/property';
+  static const String getPropertyById= '$baseUrl/property';
 }

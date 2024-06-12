@@ -11,13 +11,36 @@ import 'package:alfariz_property/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:get/get.dart';
+import 'dart:convert';
+import 'dart:typed_data';
 
 class TPropertyCardVertical extends StatelessWidget {
-  const TPropertyCardVertical({super.key});
+  final String nameProperty;
+  final String owner;
+  final String price;
+  final String imageUrl;
+
+  const TPropertyCardVertical({
+    super.key,
+    required this.nameProperty,
+    required this.owner,
+    required this.price,
+    required this.imageUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
+
+    Uint8List? _decodeBase64Image(String base64String) {
+      try {
+        return base64Decode(base64String);
+      } catch (e) {
+        return null;
+      }
+    }
+
+    final imageBytes = _decodeBase64Image(imageUrl);
 
     return GestureDetector(
       onTap: () => Get.to(() => const ProductDetailScreen()),
@@ -35,12 +58,19 @@ class TPropertyCardVertical extends StatelessWidget {
               height: 180,
               padding: const EdgeInsets.all(Tsizes.sm),
               backgroundColor: dark ? TColors.dark : TColors.light,
-              child: const Stack(
+              child: Stack(
                 children: [
-                  TRoundedImage(
-                    imageUrl: TImages.home,
-                    applyImageRadius: true,
-                  ),
+                  imageBytes != null
+                      ? Image.memory(
+                          imageBytes,
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                          height: double.infinity,
+                        )
+                      : const TRoundedImage(
+                          imageUrl: TImages.notFound,
+                          applyImageRadius: true,
+                        ),
                 ],
               ),
             ),
@@ -52,9 +82,9 @@ class TPropertyCardVertical extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TPropertyTitleText(
-                    title: 'Rumah Al-Fariz',
-                    smallSize: true,
+                  TPropertyTitleText(
+                    title: nameProperty,
+                    smallSize: false,
                   ),
                   const SizedBox(
                     height: Tsizes.spaceBtwItems / 2,
@@ -62,7 +92,7 @@ class TPropertyCardVertical extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Al-Fariz Properties',
+                        owner,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: Theme.of(context).textTheme.labelMedium,
@@ -75,10 +105,10 @@ class TPropertyCardVertical extends StatelessWidget {
                       )
                     ],
                   ),
-                  const Row(
+                  Row(
                     children: [
                       TPropertyPriceText(
-                        price: '1.500.000.000',
+                        price: price,
                       )
                     ],
                   )

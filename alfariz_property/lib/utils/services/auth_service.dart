@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:alfariz_property/features/authentication/screens/login/login.dart';
 import 'package:alfariz_property/navigation_menu.dart';
 import 'package:alfariz_property/utils/constants/api_constants.dart';
 import 'package:alfariz_property/utils/http/http_client.dart';
@@ -17,7 +18,7 @@ class AuthService {
           'Login Response: $response'); // Tambahkan log untuk melihat response
       if (response.containsKey('token')) {
         await TLocalStorage().saveData('token', response['token']);
-        Get.to(() => const NavigationMenu());
+        Get.offAll(() => const NavigationMenu());
       } else {
         // Handle login failure
         throw Exception('Invalid credentials');
@@ -112,9 +113,11 @@ class AuthService {
   Future<void> uploadPhoto(File imageFile) async {
     try {
       final token = TLocalStorage().readData<String>('token');
-      final request = http.MultipartRequest('POST', Uri.parse(APIConstants.uploadPhoto));
+      final request =
+          http.MultipartRequest('POST', Uri.parse(APIConstants.uploadPhoto));
       request.headers['Authorization'] = 'Bearer $token';
-      request.files.add(await http.MultipartFile.fromPath('photo', imageFile.path));
+      request.files
+          .add(await http.MultipartFile.fromPath('photo', imageFile.path));
       final response = await request.send();
 
       if (response.statusCode == 200) {
@@ -147,6 +150,41 @@ class AuthService {
       }
     } catch (e) {
       print('Error deleting user: $e');
+    }
+  }
+
+  Future<void> resetPassword(String email, String newPassword) async {
+    try {
+      final response = await THttpHelper.put(
+        APIConstants.forgotPassword,
+        {'email': email, 'newPassword': newPassword},
+        includeToken: false,
+      );
+      print(
+          'Reset Password Response: $response'); // Tambahkan log untuk melihat response
+
+      if (response.containsKey('message')) {
+        Get.snackbar('Success', response['message'],
+            snackPosition: SnackPosition.TOP);
+            Get.offAll(() => const LoginScreen());
+
+      } else if (response.containsKey('error')) {
+        if (response['error'] == 'Email Not Found') {
+          Get.snackbar('Error', 'Email not found',
+              snackPosition: SnackPosition.TOP);
+        } else {
+          Get.snackbar('Reset Password Failed', response['error'],
+              snackPosition: SnackPosition.TOP);
+        }
+      } else {
+        Get.snackbar('Reset Password Failed',
+            'Unable to reset password. Please try again.',
+            snackPosition: SnackPosition.TOP);
+      }
+    } catch (e) {
+      print('Reset Password Error: $e'); // Tambahkan log untuk melihat error
+      Get.snackbar('Error', 'An error occurred: $e',
+          snackPosition: SnackPosition.TOP);
     }
   }
 }

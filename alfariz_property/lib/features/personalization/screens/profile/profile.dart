@@ -198,9 +198,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               TProfileMenu(
                 title: 'E-mail',
                 value: _userData['email'] ?? '',
-                onPressed: () =>
-                    _showEditDialog('email', _userData['email'] ?? ''),
-              ),
+                onPressed: () => ()),
               TProfileMenu(
                 title: 'Phone Number',
                 value: _userData['phone'] ?? '',
