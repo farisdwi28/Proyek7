@@ -90,6 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ? property['property_medias'][0]['media']
                                 : TImages.notFound; // Default image if no media available
                             return TPropertyCardVertical(
+                              propertyId: property['id'].toString(),
                               nameProperty: property['name_property'],
                               owner: property['owner'],
                               price: property['price'].toString(),

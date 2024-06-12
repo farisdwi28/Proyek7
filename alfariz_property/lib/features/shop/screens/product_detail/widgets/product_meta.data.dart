@@ -2,46 +2,70 @@ import 'package:alfariz_property/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class TProductMetaData extends StatelessWidget {
-  const TProductMetaData({super.key});
+  final String nameProperty;
+  final String owner;
+  final String location;
+
+  const TProductMetaData({
+    Key? key,
+    required this.nameProperty,
+    required this.owner,
+    required this.location,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDarkMode = theme.brightness == Brightness.dark;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        /// Price & Sale price
-        Row(
-          children: [
-            /// Price
-            Text('Rumah Al-Fariz',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .apply(decoration: TextDecoration.none)),
-            const SizedBox(width: Tsizes.spaceBtwItems),
-          ],
+        /// Property Name
+        Text(
+          nameProperty,
+          style: theme.textTheme.headline5?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: isDarkMode ? Colors.white : Colors.black,
+          ),
         ),
-        const SizedBox(height: Tsizes.spaceBtwItems / 1.5),
+        const SizedBox(height: Tsizes.spaceBtwItems),
 
-        /// Title
+        /// Location
         Row(
           children: [
-            const Icon(Icons.location_on, size: Tsizes.iconmd),
+            const Icon(Icons.location_on, size: Tsizes.iconmd, color: Colors.red),
             const SizedBox(width: Tsizes.spaceBtwItems / 2),
-            Text('Bandung', style: Theme.of(context).textTheme.titleMedium),
+            Expanded(
+              child: Text(
+                location,
+                style: theme.textTheme.subtitle1?.copyWith(
+                  color: isDarkMode ? Colors.white70 : Colors.black87,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
           ],
         ),
-        const SizedBox(height: Tsizes.spaceBtwItems / 1.5),
-        Row(
-          children: [
-            const Icon(Icons.person, size: Tsizes.iconmd),
-            const SizedBox(width: Tsizes.spaceBtwItems / 2),
-            Text('Joko Anwar', style: Theme.of(context).textTheme.titleMedium),
-          ],
-        ),
-        const SizedBox(height: Tsizes.spaceBtwItems / 1.5),
+        const SizedBox(height: Tsizes.spaceBtwItems),
 
-        /// Brand
+        /// Owner
+        Row(
+          children: [
+            const Icon(Icons.person, size: Tsizes.iconmd, color: Colors.blue),
+            const SizedBox(width: Tsizes.spaceBtwItems / 2),
+            Expanded(
+              child: Text(
+                owner,
+                style: theme.textTheme.subtitle1?.copyWith(
+                  color: isDarkMode ? Colors.white70 : Colors.black87,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: Tsizes.spaceBtwItems),
       ],
     );
   }

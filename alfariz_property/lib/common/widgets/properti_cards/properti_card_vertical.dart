@@ -15,6 +15,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 class TPropertyCardVertical extends StatelessWidget {
+  final String propertyId; // Tambahkan ini
   final String nameProperty;
   final String owner;
   final String price;
@@ -22,6 +23,7 @@ class TPropertyCardVertical extends StatelessWidget {
 
   const TPropertyCardVertical({
     super.key,
+    required this.propertyId, // Tambahkan ini
     required this.nameProperty,
     required this.owner,
     required this.price,
@@ -43,7 +45,7 @@ class TPropertyCardVertical extends StatelessWidget {
     final imageBytes = _decodeBase64Image(imageUrl);
 
     return GestureDetector(
-      onTap: () => Get.to(() => const ProductDetailScreen()),
+      onTap: () => Get.to(() => ProductDetailScreen(propertyId: propertyId)), // Tambahkan ini
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
