@@ -12,25 +12,29 @@ import 'dart:convert';
 class TUserProfileTile extends StatefulWidget {
   const TUserProfileTile({
     super.key, 
-  required this.onPressed,
+    required this.onPressed,
   });
   
   final VoidCallback onPressed;
-  
 
   @override
-  // ignore: library_private_types_in_public_api
   _TUserProfileTileState createState() => _TUserProfileTileState();
 }
 
 class _TUserProfileTileState extends State<TUserProfileTile> {
-  late Future<Map<String, dynamic>> userData;
+  late Future<Map<String, dynamic>> userData = Future.value({});
 
   @override
   void initState() {
     super.initState();
-    final token = TLocalStorage().readData<String>('token') ?? '';
-    userData = AuthService().fetchUserData(token);
+    _refreshUserData();
+  }
+
+  Future<void> _refreshUserData() async {
+    final token = await TLocalStorage().readData<String>('token');
+    setState(() {
+      userData = AuthService().fetchUserData(token ?? '');
+    });
   }
 
   @override
@@ -42,7 +46,7 @@ class _TUserProfileTileState extends State<TUserProfileTile> {
           return const CircularProgressIndicator();
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
-        } else if (!snapshot.hasData) {
+        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
           return const Text('No user data found');
         } else {
           final data = snapshot.data!;
@@ -69,7 +73,10 @@ class _TUserProfileTileState extends State<TUserProfileTile> {
                     .bodyMedium!
                     .apply(color: TColors.light)),
             trailing: IconButton(
-                onPressed: () => Get.to(() => const ProfileScreen()),
+                onPressed: () async {
+                  await Get.to(() => const ProfileScreen());
+                  _refreshUserData(); // Refresh user data after returning from ProfileScreen
+                },
                 icon: const Icon(Iconsax.edit, color: TColors.light)),
           );
         }

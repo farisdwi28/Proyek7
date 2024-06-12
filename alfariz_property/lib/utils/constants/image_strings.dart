@@ -27,6 +27,7 @@ class TImages {
 
   //Property
   static const String home = "assets/images/property/rumah.png";
+  static const String property1 = "assets/images/property/gambar_rumah.webp";
 
 
 

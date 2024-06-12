@@ -3,12 +3,14 @@ import 'package:alfariz_property/common/styles/shadow.dart';
 import 'package:alfariz_property/common/widgets/images/t_rounded_image.dart';
 import 'package:alfariz_property/common/widgets/texts/properti_price_text.dart';
 import 'package:alfariz_property/common/widgets/texts/properti_title_text.dart';
+import 'package:alfariz_property/features/shop/screens/product_detail/product_detail.dart';
 import 'package:alfariz_property/utils/constants/colors.dart';
 import 'package:alfariz_property/utils/constants/image_strings.dart';
 import 'package:alfariz_property/utils/constants/sizes.dart';
 import 'package:alfariz_property/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:get/get.dart';
 
 class TPropertyCardVertical extends StatelessWidget {
   const TPropertyCardVertical({super.key});
@@ -18,7 +20,7 @@ class TPropertyCardVertical extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
 
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => const ProductDetailScreen()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -75,7 +77,9 @@ class TPropertyCardVertical extends StatelessWidget {
                   ),
                   const Row(
                     children: [
-                      TPropertyPriceText(price: '1.500.000.000',)
+                      TPropertyPriceText(
+                        price: '1.500.000.000',
+                      )
                     ],
                   )
                 ],
