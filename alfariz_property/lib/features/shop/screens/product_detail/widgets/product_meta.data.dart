@@ -1,16 +1,20 @@
+import 'package:alfariz_property/common/widgets/texts/properti_price_text.dart';
 import 'package:alfariz_property/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class TProductMetaData extends StatelessWidget {
   final String nameProperty;
   final String owner;
   final String location;
+  final String price;
 
   const TProductMetaData({
     Key? key,
     required this.nameProperty,
     required this.owner,
     required this.location,
+    required this.price,
   }) : super(key: key);
 
   @override
@@ -62,6 +66,17 @@ class TProductMetaData extends StatelessWidget {
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
+            ),
+          ],
+        ),
+        const SizedBox(height: Tsizes.spaceBtwItems),
+        Row(
+          children: [
+            const SizedBox(width: Tsizes.spaceBtwItems / 2),
+            Expanded(
+              child:  TPropertyPriceText(
+                        price: price,
+                      )
             ),
           ],
         ),

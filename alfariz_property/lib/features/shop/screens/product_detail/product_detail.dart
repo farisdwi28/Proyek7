@@ -46,6 +46,7 @@ class ProductDetailScreen extends StatelessWidget {
           final String bed = propertyData['bed']?.toString() ?? 'N/A';
           final String bath = propertyData['bath']?.toString() ?? 'N/A';
           final String surfaceArea = propertyData['surface_area']?.toString() ?? 'N/A';
+          final String price = propertyData['price']?.toString() ?? 'N/A';
           final String description = propertyData['description'] ?? 'N/A';
 
           return SingleChildScrollView(
@@ -63,6 +64,7 @@ class ProductDetailScreen extends StatelessWidget {
                     nameProperty: nameProperty,
                     owner: owner,
                     location: location,
+                    price: price,
                   ),
 
                   /// 3 -- Property Attributes
