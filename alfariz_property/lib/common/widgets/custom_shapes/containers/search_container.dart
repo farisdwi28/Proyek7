@@ -7,25 +7,27 @@ import 'package:iconsax/iconsax.dart';
 
 class TSearchContainer extends StatelessWidget {
   const TSearchContainer({
-    super.key,
+    Key? key,
     required this.text,
+    required this.controller,
+    required this.onSubmitted,
     this.icon = Iconsax.search_normal,
     this.showBackground = true,
-    this.showBorder = true, 
-    this.onTap,
+    this.showBorder = true,
   });
 
   final String text;
-  final IconData? icon;
+  final TextEditingController controller;
+  final VoidCallback onSubmitted;
+  final IconData icon;
   final bool showBackground, showBorder;
-  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {}, // You can optionally handle onTap if needed
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: Tsizes.defaultSpace),
         child: Container(
@@ -49,9 +51,17 @@ class TSearchContainer extends StatelessWidget {
               const SizedBox(
                 width: Tsizes.spaceBtwItems,
               ),
-              Text(
-                text,
-                style: Theme.of(context).textTheme.bodySmall,
+              Expanded(
+                child: TextField(
+                  controller: controller,
+                  decoration: InputDecoration(
+                    hintText: text,
+                    border: InputBorder.none,
+                  ),
+                  onSubmitted: (_) {
+                    onSubmitted();
+                  },
+                ),
               ),
             ],
           ),

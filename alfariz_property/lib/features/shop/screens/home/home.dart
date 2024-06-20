@@ -1,17 +1,16 @@
+import 'package:flutter/material.dart';
+import 'package:alfariz_property/utils/services/property_auth.dart';
 import 'package:alfariz_property/common/widgets/custom_shapes/containers/primary_header_container.dart';
-import 'package:alfariz_property/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:alfariz_property/common/widgets/layouts/grid_layout.dart';
 import 'package:alfariz_property/common/widgets/properti_cards/properti_card_vertical.dart';
 import 'package:alfariz_property/common/widgets/texts/section_heading.dart';
 import 'package:alfariz_property/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:alfariz_property/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:alfariz_property/utils/constants/sizes.dart';
-import 'package:alfariz_property/utils/services/property_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:alfariz_property/utils/constants/image_strings.dart'; // Import TImages
+import 'package:alfariz_property/utils/constants/image_strings.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -20,8 +19,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final PropertyService _propertyService = PropertyService();
   List<Map<String, dynamic>> _properties = [];
+  List<Map<String, dynamic>> _filteredProperties = [];
   bool _isLoading = true;
   String? _errorMessage;
+  TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
@@ -34,6 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
       final properties = await _propertyService.fetchProperties();
       setState(() {
         _properties = properties;
+        _filteredProperties =
+            properties; // Initialize filtered properties with all properties
         _isLoading = false;
       });
     } catch (e) {
@@ -42,6 +45,21 @@ class _HomeScreenState extends State<HomeScreen> {
         _isLoading = false;
       });
     }
+  }
+
+  void _filterProperties(String searchText) {
+    setState(() {
+      if (searchText.isEmpty) {
+        _filteredProperties = _properties; // Reset to show all properties
+      } else {
+        _filteredProperties = _properties
+            .where((property) => property['name_property']
+                .toString()
+                .toLowerCase()
+                .contains(searchText.toLowerCase()))
+            .toList();
+      }
+    });
   }
 
   @override
@@ -54,17 +72,53 @@ class _HomeScreenState extends State<HomeScreen> {
               : SingleChildScrollView(
                   child: Column(
                     children: [
-                      const TPrimaryHeaderContainer(
+                      TPrimaryHeaderContainer(
                         child: Column(
                           children: [
                             THomeAppBar(),
                             SizedBox(height: Tsizes.defaultSpace),
-                            TSearchContainer(
-                              text: 'Search in here',
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: Tsizes.defaultSpace),
+                              child: TextField(
+                                controller: _searchController,
+                                decoration: InputDecoration(
+                                  hintText: 'Search in here',
+                                  hintStyle: TextStyle(color: Colors.white),
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.white), // border color
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.white), // border color
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  suffixIcon: _searchController.text.isNotEmpty
+                                      ? IconButton(
+                                          icon: Icon(Icons.clear,
+                                              color: Colors.white),
+                                          onPressed: () {
+                                            _searchController.clear();
+                                            _filterProperties('');
+                                          },
+                                        )
+                                      : null,
+                                  floatingLabelBehavior: FloatingLabelBehavior
+                                      .never, // Hide the hint label when focused
+                                ),
+                                style: TextStyle(
+                                    color: Colors.white), // text color
+                                onChanged: (value) {
+                                  _filterProperties(value);
+                                },
+                              ),
                             ),
                             SizedBox(height: Tsizes.defaultSpace),
                             Padding(
-                              padding: EdgeInsets.only(left: Tsizes.defaultSpace),
+                              padding:
+                                  EdgeInsets.only(left: Tsizes.defaultSpace),
                               child: Column(
                                 children: [
                                   TSectionHeading(
@@ -83,12 +137,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       Padding(
                         padding: const EdgeInsets.all(Tsizes.defaultSpace),
                         child: TGridLayout(
-                          itemCount: _properties.length,
+                          itemCount: _filteredProperties.length,
                           itemBuilder: (_, index) {
-                            final property = _properties[index];
-                            final imageUrl = property['property_medias'].isNotEmpty
+                            final property = _filteredProperties[index];
+                            final imageUrl = property['property_medias']
+                                    .isNotEmpty
                                 ? property['property_medias'][0]['media']
-                                : TImages.notFound; // Default image if no media available
+                                : TImages
+                                    .notFound; // Default image if no media available
                             return TPropertyCardVertical(
                               propertyId: property['id'].toString(),
                               nameProperty: property['name_property'],

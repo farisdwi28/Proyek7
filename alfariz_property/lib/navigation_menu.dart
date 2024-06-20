@@ -1,13 +1,31 @@
-import 'package:alfariz_property/features/personalization/screens/settings/settings.dart';
-import 'package:alfariz_property/features/shop/screens/home/home.dart';
-import 'package:alfariz_property/utils/constants/colors.dart';
-import 'package:alfariz_property/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+// Import screen widgets yang digunakan
+import 'package:alfariz_property/features/shop/screens/home/home.dart';
+import 'package:alfariz_property/features/personalization/screens/settings/settings.dart';
+
+// Import helper function yang mungkin diperlukan
+import 'package:alfariz_property/utils/helpers/helper_functions.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 class NavigationMenu extends StatelessWidget {
-  const NavigationMenu({super.key});
+  const NavigationMenu({Key? key});
+
+void openWebURL() async {
+  final url = 'https://wa.me/6281259352510';
+
+  try {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      print('Tidak dapat membuka URL: $url');
+    }
+  } catch (e) {
+    print('Error: $e');
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -16,24 +34,29 @@ class NavigationMenu extends StatelessWidget {
 
     return Scaffold(
       bottomNavigationBar: Obx(
-        () => NavigationBar(
-          height: 80,
-          elevation: 0,
-          selectedIndex: controller.selectedIndex.value,
-          onDestinationSelected: (index) =>
-              controller.selectedIndex.value = index,
-          backgroundColor: darkMode ? TColors.black : Colors.white,
-          indicatorColor: darkMode
-              ? TColors.light.withOpacity(0.1)
-              : TColors.black.withOpacity(0.1),
-          destinations: const [
-            NavigationDestination(icon: Icon(Iconsax.home), label: "Home"),
-            NavigationDestination(icon: Icon(Iconsax.device_message), label: "Chat Admin"),
-            NavigationDestination(icon: Icon(Iconsax.user), label: "Profile"),
+        () => BottomNavigationBar(
+          currentIndex: controller.selectedIndex.value,
+          onTap: (index) => controller.selectedIndex.value = index,
+          backgroundColor: darkMode ? Colors.black : Colors.white,
+          selectedItemColor: darkMode ? Colors.white : Colors.black,
+          unselectedItemColor: darkMode ? Colors.grey : Colors.grey[600],
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Iconsax.home),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Iconsax.user),
+              label: "Profile",
+            ),
           ],
         ),
       ),
       body: Obx(() => controller.screens[controller.selectedIndex.value]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: openWebURL, // Menggunakan openWebURL untuk membuka URL web
+        child: Icon(Iconsax.message_square),
+      ),
     );
   }
 }
@@ -43,7 +66,6 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomeScreen(),
-    Container(color: Colors.orange),
-    const SettingsScreen()
+    const SettingsScreen(),
   ];
 }
