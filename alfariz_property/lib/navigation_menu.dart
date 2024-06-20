@@ -13,17 +13,10 @@ import 'package:url_launcher/url_launcher.dart';
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({Key? key});
 
-void openWebURL() async {
-  final url = 'https://wa.me/6281259352510';
-
-  try {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      print('Tidak dapat membuka URL: $url');
-    }
-  } catch (e) {
-    print('Error: $e');
+void _launchUrl() async {
+  final Uri _url = Uri.parse('https://wa.me/6281259352510');
+  if (!await launchUrl(_url)) {
+  throw Exception('Could not launch $_url');
   }
 }
 
@@ -54,8 +47,8 @@ void openWebURL() async {
       ),
       body: Obx(() => controller.screens[controller.selectedIndex.value]),
       floatingActionButton: FloatingActionButton(
-        onPressed: openWebURL, // Menggunakan openWebURL untuk membuka URL web
-        child: Icon(Iconsax.message_square),
+        onPressed: _launchUrl, // Menggunakan openWebURL untuk membuka URL web
+        child: const Icon(Iconsax.message_square),
       ),
     );
   }
